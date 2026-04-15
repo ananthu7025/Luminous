@@ -17,7 +17,12 @@
       "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files src/components/)",
       "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files src/components/shared/CTA/)",
       "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files src/)",
-      "Bash(git mv *)"
+      "Bash(git mv *)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics add public/images/avatar/avatar-4.png public/images/mockups/tripledge_mockup_final.png public/images/mockups/nca_mockup.png public/images/mockups/alsabha_mockup.png public/images/mockups/stmaries_mockup.png public/images/mockups/spicemagic_mockup.png package.json)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files --error-unmatch public/images/mockups/tripledge_mockup_final.png)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics diff --cached --stat)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics show 542e0d9 --stat)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics show f78263d --stat)"
     ]
   }
 }
