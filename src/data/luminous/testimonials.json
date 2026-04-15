@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "Al Sabah Representative",
+    "position": "Al Sabah HVAC Solutions",
+    "quote": "The digital solution Luminous Logics built for us directly supported our international expansion vision. Professional, reliable, and they truly understood our requirements from day one.",
+    "avatar": "/images/avatar/avatar-1.png"
+  },
+  {
+    "id": "2",
+    "name": "Umbrella Clinic Team",
+    "position": "Umbrella Clinic",
+    "quote": "The customized website and ERP system dramatically improved our patient consultations and online visibility. Exceptional quality, attention to detail, and smooth delivery throughout.",
+    "avatar": "/images/avatar/avatar-2.png"
+  },
+  {
+    "id": "3",
+    "name": "NCAMadeEasy Team",
+    "position": "NCAMadeEasy",
+    "quote": "The LMS platform Luminous built was a true game-changer for our exam preparation platform. Fast delivery, clean design, and exactly what we envisioned — highly recommend.",
+    "avatar": "/images/avatar/avatar-3.png"
+  },
+  {
+    "id": "4",
+    "name": "SpiceMagic Team",
+    "position": "E-commerce Store",
+    "quote": "The SpiceMagic e-commerce platform has been a total success. The design is beautiful and the shopping experience is flawless. Highly recommend Luminous Logics!",
+    "avatar": "/images/avatar/avatar-6.png"
+  },
+  {
+    "id": "5",
+    "name": "St. Mary's Team",
+    "position": "Landscaping & Construction",
+    "quote": "Our new website as Saskatoon's best landscaping team has really helped us grow. Luminous captured our vision perfectly and delivered a premium result.",
+    "avatar": "/images/avatar/avatar-1.png"
+  }
+]

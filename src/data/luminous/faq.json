@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "What technologies do you work with?",
+    "answer": "We work with React, Next.js, Node.js, Flutter, React Native, Laravel, Python, and more — always choosing the best stack for your project's specific needs and scale."
+  },
+  {
+    "id": 2,
+    "question": "How long does a typical project take?",
+    "answer": "Project timelines vary based on scope. A standard web app typically takes 6–12 weeks, while larger platforms can take 3–6 months. We provide a detailed timeline after our discovery session."
+  },
+  {
+    "id": 3,
+    "question": "Do you work with international clients?",
+    "answer": "Yes. We are time-zone aligned and work with clients globally. Our team is comfortable with both async and real-time communication across regions and time zones."
+  },
+  {
+    "id": 4,
+    "question": "Do you provide post-launch support?",
+    "answer": "Absolutely. We offer proactive post-launch support and maintenance packages to keep your product running smoothly, securely, and up-to-date after launch."
+  },
+  {
+    "id": 5,
+    "question": "What industries do you serve?",
+    "answer": "We have deep expertise across FinTech, Healthcare, Edutech, HVAC, Legal, HRM, ERP, Travel, eCommerce, AI Chatbots, Telecommunications, Workflow Management, and more."
+  },
+  {
+    "id": 6,
+    "question": "Can I see examples of your previous work?",
+    "answer": "Yes — visit our Portfolio page to see case studies from Al Sabah HVAC, NCAMadeEasy, SpiceMagic, St. Mary's Construction, and more."
+  }
+]
