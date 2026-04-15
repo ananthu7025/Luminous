@@ -22,7 +22,10 @@
       "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files --error-unmatch public/images/mockups/tripledge_mockup_final.png)",
       "Bash(git -C /Users/ananthu/Desktop/luminouslogics diff --cached --stat)",
       "Bash(git -C /Users/ananthu/Desktop/luminouslogics show 542e0d9 --stat)",
-      "Bash(git -C /Users/ananthu/Desktop/luminouslogics show f78263d --stat)"
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics show f78263d --stat)",
+      "Bash(node_modules/.bin/next --version)",
+      "Bash(npm audit *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('next:', p.dependencies.next\\); console.log\\('eslint-config-next:', p.devDependencies['eslint-config-next']\\); console.log\\('swiper:', p.dependencies.swiper\\);\")"
     ]
   }
 }
