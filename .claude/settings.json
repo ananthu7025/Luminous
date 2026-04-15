@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics ls-files -- \"*.png\" \"*.jpg\" \"*.svg\" \"*.webp\" \"*.avif\" \"*.mp4\")",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics log --oneline)",
+      "Bash(git -C /Users/ananthu/Desktop/luminouslogics show 3d4508b:public/images/mockups/tripledge_mockup_final.png)"
     ]
   }
 }
