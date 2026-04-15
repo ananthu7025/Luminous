@@ -1,7 +1,7 @@
 ---
 title: 'JWT Authentication and Role-Based Access in Production SaaS Apps'
 publishDate: 'April 12, 2024'
-thumbnail: '/images/blog/blog-2.png'
+thumbnail: '/images/blog/jwt-auth-saas.png'
 tag: 'SaaS'
 author: 'Luminous Team'
 authorImage: '/images/avatar/avatar-1.png'

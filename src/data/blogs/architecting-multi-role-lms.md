@@ -1,26 +1,22 @@
 ---
-title: 'How We Architected a Multi-Role LMS on Next.js for 500+ Concurrent Users'
+title: 'Architecting a Multi-Role LMS: Lessons from NCAMadeEasy'
 publishDate: 'April 10, 2024'
-thumbnail: '/images/blog/blog-1.png'
-tag: 'Engineering'
+thumbnail: '/images/blog/architecting-multi-role-lms.png'
+tag: 'Architecture'
 author: 'Luminous Team'
 authorImage: '/images/avatar/avatar-1.png'
 readTime: '8 min'
-description: 'A deep dive into the architectural decisions for scaling a Next.js LMS platform.'
+description: 'A deep dive into the technical architecture of a scalable, high-performance Learning Management System.'
 slug: 'architecting-multi-role-lms'
 ---
 
-When NCAMadeEasy came to us, they had a content problem masquerading as a technology problem. Their instinct was to ask for "a better website." What they actually needed was a learning platform — one that could handle multiple user types, high-bitrate video, payment processing, and progress tracking simultaneously without falling over.
+When we started building the NCAMadeEasy platform, we weren't just building a website. We were building a high-performance educational engine that had to handle three distinct user roles, low-latency video delivery, and secure automated billing.
 
-### The Three-Role Problem
-Most LMS tutorials show you how to build for one user type. Real platforms need to serve radically different user experiences from the same codebase. Our three roles were Super Admin (platform management, analytics, content oversight), Instructor (course creation, student monitoring, quiz management), and Student (course browsing, video consumption, progress tracking, certification).
+### The Multi-Role Challenge
+In a production LMS, role-based access control (RBAC) is more than just a permission list. It's about data isolation. A student should never see the analytics dashboard of an instructor. We implemented an RBAC system using JWT (JSON Web Tokens) where the role is encoded into the token payload, allowing our Next.js middleware to perform lightning-fast, edge-side authorization checks.
 
-The key decision was where to enforce role separation. We chose to do it at three layers: middleware route protection, API-level permission checks, and UI-level conditional rendering. This meant a student could never accidentally access instructor tooling, and an instructor could never touch platform-wide settings.
+### Video Pipeline: From S3 to the Student
+One of the core requirements was a seamless video experience. We built an automated pipeline where raw videos uploaded to AWS S3 trigger a Lambda function for transcoding into HLS format. This ensures that whether a student is on a high-speed fiber connection in Toronto or a mobile network in a rural area, they get the best possible bitrate without buffering.
 
-### Video Delivery Architecture
-Raw video upload to the platform was a non-starter for scale. We built a pipeline: upload to AWS S3, trigger a Lambda function to kick off MediaConvert transcoding into adaptive bitrate HLS, deliver via CloudFront CDN. Students get smooth playback at whatever their connection supports.
-
-Progress tracking was tied to the video player — we used a custom hook that fires a debounced API call every 30 seconds of watch time, storing module completion state in MongoDB. This ensured progress survived page refreshes and device switches.
-
-### Payment and Enrollment Flow
-We used Stripe Checkout for the purchase flow and Stripe Webhooks for enrollment activation. The key architectural decision here was to never trust the frontend. Enrollment is only activated when our webhook handler receives a confirmed checkout.session.completed event from Stripe.
+### Payment and Automation
+By integrating the Stripe API directly into our Next.js backend, we eliminated the need for manual enrollment. When a checkout is successful, Stripe webhooks trigger a database update that instantly unlocks the course for the student and sends an automated welcome sequence. This reduced admin overhead for the NCAMadeEasy team by nearly 90%.
