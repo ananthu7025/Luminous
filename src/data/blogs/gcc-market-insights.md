@@ -1,7 +1,7 @@
 ---
 title: 'Building for the GCC Market: What Indian Dev Teams Need to Know'
 publishDate: 'April 16, 2024'
-thumbnail: '/images/blog/blog-4.png'
+thumbnail: '/images/blog/gcc-market-insights.png'
 tag: 'Business'
 author: 'Luminous Team'
 authorImage: '/images/avatar/avatar-1.png'

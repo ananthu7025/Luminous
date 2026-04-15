@@ -1,7 +1,7 @@
 ---
 title: 'Why Custom Software Beats No-Code for Scaling Businesses in 2025'
 publishDate: 'April 14, 2024'
-thumbnail: '/images/blog/blog-3.png'
+thumbnail: '/images/blog/custom-software-vs-nocode.png'
 tag: 'Strategy'
 author: 'Luminous Team'
 authorImage: '/images/avatar/avatar-1.png'

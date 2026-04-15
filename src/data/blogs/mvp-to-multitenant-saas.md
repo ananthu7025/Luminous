@@ -1,7 +1,7 @@
 ---
 title: 'From MVP to Multi-Tenant: Our SaaS Product Development Playbook'
 publishDate: 'April 18, 2024'
-thumbnail: '/images/blog/blog-5.png'
+thumbnail: '/images/blog/mvp-to-multitenant-saas.png'
 tag: 'Product'
 author: 'Luminous Team'
 authorImage: '/images/avatar/avatar-1.png'
