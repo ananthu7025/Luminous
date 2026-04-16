@@ -25,12 +25,18 @@ export async function POST(request: NextRequest) {
 
     const responseText = await response.text();
     console.log('Backend response status:', response.status);
-    console.log('Backend response:', responseText);
+    console.log('Backend response headers:', Object.fromEntries(response.headers));
+    console.log('Backend response body:', responseText);
 
     if (!response.ok) {
+      console.error(`Backend returned ${response.status}:`, responseText);
       return NextResponse.json(
-        { error: `Backend error: ${response.status}`, details: responseText },
-        { status: response.status }
+        {
+          error: `Backend error: ${response.status}`,
+          details: responseText,
+          message: 'The backend server rejected the request. Please check the endpoint URL and request format.'
+        },
+        { status: 200 } // Return 200 so we can see the error in the UI
       );
     }
 
