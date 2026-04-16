@@ -21,6 +21,9 @@ export const crmApi = {
     config: () => `${CRM_API_BASE}/api/chatbot-config`,
     message: () => `${CRM_API_BASE}/api/chatbot/message`,
   },
+  contact: {
+    submit: () => `${CRM_API_BASE}/api/contact-form`,
+  },
 };
 
 /**

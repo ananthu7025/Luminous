@@ -1,23 +1,125 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/utils/cn';
 import lumosAvatar from '@public/images/luminous-assets/alis.png';
 import RevealAnimation from '../animation/RevealAnimation';
+import { crmApi } from '@/config/api';
+
+interface Message {
+  id: string;
+  content: string;
+  sender: 'user' | 'assistant';
+  timestamp: Date;
+}
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Initialize chat on component mount
   useEffect(() => {
-    // Show greeting after 2 seconds
+    if (!hasInitialized) {
+      initializeChat();
+      setHasInitialized(true);
+    }
+  }, [hasInitialized]);
+
+  // Show greeting after 2 seconds
+  useEffect(() => {
     const timer = setTimeout(() => {
       if (!isOpen) setShowGreeting(true);
     }, 2000);
     return () => clearTimeout(timer);
   }, [isOpen]);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const initializeChat = async () => {
+    try {
+      const response = await fetch(crmApi.chatbot.config());
+      if (response.ok) {
+        const config = await response.json();
+        // Add initial greeting from config or default
+        const welcomeMessage: Message = {
+          id: '1',
+          content: config.greeting || "Hi there, I'm Lumos 👋\n\nI'm here to help you explore Luminous Logics — specifically our services and how we ship products.",
+          sender: 'assistant',
+          timestamp: new Date(),
+        };
+        setMessages([welcomeMessage]);
+      }
+    } catch (error) {
+      console.error('Failed to initialize chatbot:', error);
+      // Fallback to default greeting
+      const welcomeMessage: Message = {
+        id: '1',
+        content: "Hi there, I'm Lumos 👋\n\nI'm here to help you explore Luminous Logics — specifically our services and how we ship products.",
+        sender: 'assistant',
+        timestamp: new Date(),
+      };
+      setMessages([welcomeMessage]);
+    }
+  };
+
+  const sendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+
+    // Add user message
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: inputValue,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(crmApi.chatbot.message(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: inputValue }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const assistantMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          content: data.reply || "I'm having trouble responding. Please try again.",
+          sender: 'assistant',
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, assistantMessage]);
+      } else {
+        throw new Error('Failed to get response');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: "Sorry, I'm having trouble responding right now. Please try again later.",
+        sender: 'assistant',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -94,50 +196,93 @@ const Chatbot = () => {
 
           {/* Body */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[380px]">
-             {/* Assistant Message */}
-             <div className="space-y-3">
-               <div className="bg-white/10 p-4 rounded-xl rounded-tl-none border border-white/5">
-                 <p className="text-white text-[13px] font-semibold mb-1">Hi there, I&apos;m Lumos 👋</p>
-                 <p className="text-white/70 text-[13px] leading-relaxed">
-                   I&apos;m here to help you explore Luminous Logics — specifically our services and how we ship products.
-                 </p>
-               </div>
-               <div className="bg-white/5 p-4 rounded-xl border border-white/5">
-                 <p className="text-white/60 text-[11px] font-bold uppercase tracking-wide mb-3">
-                    Quick Actions
-                 </p>
-                 <div className="grid grid-cols-2 gap-2">
-                    {menuItems.map((item) => (
-                      <Link 
-                        key={item.label} 
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="flex items-center gap-2 p-2.5 rounded-lg bg-white/5 hover:bg-accent/20 border border-white/5 hover:border-accent/40 transition-all text-[11px] font-bold text-white/80"
-                      >
-                        <span className="text-sm">{item.icon}</span>
-                        {item.label}
-                      </Link>
-                    ))}
-                 </div>
-               </div>
-             </div>
+            {messages.length === 0 ? (
+              <div className="space-y-3">
+                <div className="bg-white/10 p-4 rounded-xl rounded-tl-none border border-white/5">
+                  <p className="text-white text-[13px] font-semibold mb-1">Hi there, I&apos;m Lumos 👋</p>
+                  <p className="text-white/70 text-[13px] leading-relaxed">
+                    I&apos;m here to help you explore Luminous Logics — specifically our services and how we ship products.
+                  </p>
+                </div>
+                <div className="bg-white/5 p-4 rounded-xl border border-white/5">
+                  <p className="text-white/60 text-[11px] font-bold uppercase tracking-wide mb-3">
+                     Quick Actions
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                     {menuItems.map((item) => (
+                       <Link
+                         key={item.label}
+                         href={item.href}
+                         onClick={() => setIsOpen(false)}
+                         className="flex items-center gap-2 p-2.5 rounded-lg bg-white/5 hover:bg-accent/20 border border-white/5 hover:border-accent/40 transition-all text-[11px] font-bold text-white/80"
+                       >
+                         <span className="text-sm">{item.icon}</span>
+                         {item.label}
+                       </Link>
+                     ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={cn(
+                    'flex',
+                    msg.sender === 'user' ? 'justify-end' : 'justify-start'
+                  )}
+                >
+                  <div
+                    className={cn(
+                      'max-w-xs px-4 py-2 rounded-xl border',
+                      msg.sender === 'user'
+                        ? 'bg-accent text-secondary rounded-br-none border-accent/50'
+                        : 'bg-white/10 text-white rounded-tl-none border-white/5'
+                    )}
+                  >
+                    <p className="text-[13px] leading-relaxed whitespace-pre-wrap">
+                      {msg.content}
+                    </p>
+                  </div>
+                </div>
+              ))
+            )}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white/10 px-4 py-2 rounded-xl rounded-tl-none border border-white/5">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" />
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Footer */}
-          <div className="p-4 border-t border-white/10">
+          <form onSubmit={sendMessage} className="p-4 border-t border-white/10">
             <div className="relative">
-              <input 
-                type="text" 
-                placeholder="Message Lumos..." 
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white text-[13px] focus:outline-none focus:border-accent/50 transition-colors pr-12"
+              <input
+                type="text"
+                placeholder="Message Lumos..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                disabled={isLoading}
+                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white text-[13px] focus:outline-none focus:border-accent/50 transition-colors pr-12 disabled:opacity-50 disabled:cursor-not-allowed"
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 size-8 bg-accent text-secondary rounded-lg flex items-center justify-center hover:scale-105 transition-transform">
+              <button
+                type="submit"
+                disabled={isLoading || !inputValue.trim()}
+                className="absolute right-2 top-1/2 -translate-y-1/2 size-8 bg-accent text-secondary rounded-lg flex items-center justify-center hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </div>
-          </div>
+          </form>
         </div>
       )}
 
