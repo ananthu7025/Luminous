@@ -5,8 +5,12 @@ const CRM_API_BASE = process.env.NEXT_PUBLIC_CRM_API_BASE || 'https://luminoustr
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    console.log('Contact form request body:', body);
 
-    const response = await fetch(`${CRM_API_BASE}/api/contact-form`, {
+    const contactUrl = `${CRM_API_BASE}/api/contact-form`;
+    console.log('Sending to:', contactUrl);
+
+    const response = await fetch(contactUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,19 +18,23 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(body),
     });
 
+    const responseText = await response.text();
+    console.log('Backend response status:', response.status);
+    console.log('Backend response:', responseText);
+
     if (!response.ok) {
       return NextResponse.json(
-        { error: 'Failed to submit contact form' },
+        { error: `Backend error: ${response.status}`, details: responseText },
         { status: response.status }
       );
     }
 
-    const data = await response.json();
+    const data = JSON.parse(responseText);
     return NextResponse.json(data);
   } catch (error) {
     console.error('Contact form API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: String(error) },
       { status: 500 }
     );
   }
