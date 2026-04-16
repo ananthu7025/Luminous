@@ -166,21 +166,20 @@ const ContactInfo = () => {
               ))}
             </div>
             {/* contact form  */}
-            <RevealAnimation
-              delay={0.3}
-              className="max-w-[847px] w-full mx-auto bg-white dark:bg-background-6 rounded-4xl p-6 md:p-8 lg:p-11">
-              {/* Status Messages */}
-              {submitStatus.type && (
-                <div
-                  className={`mb-6 p-4 rounded-lg border ${
-                    submitStatus.type === 'success'
-                      ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200'
-                      : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
-                  }`}>
-                  {submitStatus.message}
-                </div>
-              )}
-              <form onSubmit={handleSubmit} className="space-y-8">
+            <RevealAnimation delay={0.3}>
+              <div className="max-w-[847px] w-full mx-auto bg-white dark:bg-background-6 rounded-4xl p-6 md:p-8 lg:p-11">
+                {/* Status Messages */}
+                {submitStatus.type && (
+                  <div
+                    className={`mb-6 p-4 rounded-lg border ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200'
+                        : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
+                    }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-8">
                 {/* name and phone number  */}
                 <div className="flex items-center flex-col md:flex-row gap-8 justify-between">
                   {/*  name */}
@@ -308,7 +307,8 @@ const ContactInfo = () => {
                   className="btn btn-md btn-secondary w-full hover:btn-primary dark:btn-accent before:content-none first-letter:uppercase disabled:opacity-50 disabled:cursor-not-allowed transition-opacity">
                   {isLoading ? 'Sending...' : 'Submit'}
                 </button>
-              </form>
+                </form>
+              </div>
             </RevealAnimation>
           </div>
         </div>
