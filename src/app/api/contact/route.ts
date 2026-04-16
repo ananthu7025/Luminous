@@ -28,7 +28,33 @@ export async function POST(request: NextRequest) {
     console.log('Backend response headers:', Object.fromEntries(response.headers));
     console.log('Backend response body:', responseText);
 
-    const data = JSON.parse(responseText);
+    let data;
+    if (!responseText) {
+      if (!response.ok) {
+        return NextResponse.json(
+          {
+            error: `Backend error: ${response.status}`,
+            message: 'The backend server returned an empty response.'
+          },
+          { status: 200 }
+        );
+      }
+      // If response is ok but empty, treat as success
+      data = { success: true };
+    } else {
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('Failed to parse JSON response:', parseError);
+        return NextResponse.json(
+          {
+            error: 'Invalid response format from backend',
+            message: 'The backend server returned invalid JSON.'
+          },
+          { status: 200 }
+        );
+      }
+    }
 
     if (!response.ok || !data.success) {
       console.error(`Backend returned ${response.status}:`, responseText);
