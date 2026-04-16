@@ -18,11 +18,11 @@ export const crmApi = {
     detail: (slug: string) => `${CRM_API_BASE}/api/case-studies?slug=${slug}`,
   },
   chatbot: {
-    config: () => `${CRM_API_BASE}/api/chatbot-config`,
-    message: () => `${CRM_API_BASE}/api/chatbot/message`,
+    config: () => '/api/chatbot?endpoint=config',
+    message: () => '/api/chatbot',
   },
   contact: {
-    submit: () => `${CRM_API_BASE}/api/contact-form`,
+    submit: () => '/api/contact',
   },
 };
 
