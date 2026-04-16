@@ -95,7 +95,7 @@ const ContactInfo = () => {
 
       const data = await response.json();
 
-      if (response.ok && !data.error) {
+      if (data.success) {
         setSubmitStatus({
           type: 'success',
           message: 'Thank you! Your message has been sent successfully. We will get back to you soon.',
@@ -110,7 +110,7 @@ const ContactInfo = () => {
           terms: false,
         });
       } else if (data.error) {
-        throw new Error(data.message || data.error);
+        throw new Error(data.error || 'Failed to submit form');
       } else {
         throw new Error('Failed to submit form');
       }

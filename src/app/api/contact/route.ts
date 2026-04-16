@@ -28,19 +28,20 @@ export async function POST(request: NextRequest) {
     console.log('Backend response headers:', Object.fromEntries(response.headers));
     console.log('Backend response body:', responseText);
 
-    if (!response.ok) {
+    const data = JSON.parse(responseText);
+
+    if (!response.ok || !data.success) {
       console.error(`Backend returned ${response.status}:`, responseText);
       return NextResponse.json(
         {
-          error: `Backend error: ${response.status}`,
+          error: data.error || `Backend error: ${response.status}`,
           details: responseText,
-          message: 'The backend server rejected the request. Please check the endpoint URL and request format.'
+          message: data.error || 'The backend server rejected the request.'
         },
         { status: 200 } // Return 200 so we can see the error in the UI
       );
     }
 
-    const data = JSON.parse(responseText);
     return NextResponse.json(data);
   } catch (error) {
     console.error('Contact form API error:', error);
