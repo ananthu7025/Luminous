@@ -1,21 +1,16 @@
 'use client';
 
-// Static imports removed for more reliable public path usage
-// Static imports removed for more reliable public path usage
-const heroBg = '/images/luminous-assets/hero-bg.svg';
-const heroBgDark = '/images/luminous-assets/hero-bg-dark.svg';
-// Hero UI images removed (unused)
 import Image from 'next/image';
-import RevealAnimation from '../animation/RevealAnimation';
 import LinkButton from '../ui/button/LinkButton';
-
+const heroBg = '/images/luminous-assets/hero-bg.svg';
+import RevealAnimation from '../animation/RevealAnimation';
+const heroBgDark = '/images/luminous-assets/hero-bg-dark.svg';
 
 const Hero = () => {
   return (
     <section className="pt-[115px] pb-0 overflow-hidden relative">
       <div className="max-w-[1365px] mx-auto">
         <div className="relative">
-          {/* hero bg  */}
           <figure className="absolute animate-pulse z-0 max-w-[1365px] -top-5 left-[50%] translate-x-[-50%] w-full h-full overflow-hidden">
             <Image
               src={heroBg}
@@ -36,9 +31,7 @@ const Hero = () => {
           </figure>
           <div className="main-container relative z-10">
             <div className="flex items-center gap-12 xl:gap-0 flex-col lg:flex-row justify-between pt-8 lg:pt-[140px] pb-10 lg:pb-[100px]">
-              {/* hero content  */}
               <div className="lg:max-w-[490px] xl:max-w-[629px] w-full space-y-7 lg:space-y-14 text-center md:text-left">
-                {/* heading text  */}
                 <div className="space-y-4">
                   <RevealAnimation delay={0.1} instant={true}>
                     <span className="text-secondary font-medium dark:text-accent tracking-wider uppercase text-tagline-2">
@@ -46,9 +39,7 @@ const Hero = () => {
                     </span>
                   </RevealAnimation>
                   <RevealAnimation delay={0.2} instant={true}>
-                    <h1 className="text-secondary font-medium dark:text-white">
-                      Where Bright Ideas Take Shape
-                    </h1>
+                    <h1 className="text-secondary font-medium dark:text-white">Where Bright Ideas Take Shape</h1>
                   </RevealAnimation>
                   <RevealAnimation delay={0.3} instant={true}>
                     <div className="space-y-4">
@@ -56,12 +47,12 @@ const Hero = () => {
                         Innovative Software Solutions, Web Development & Technology Consulting for Your Business
                       </p>
                       <p className="text-secondary/60 dark:text-white/60">
-                        Empower your business with innovative solutions and cutting-edge technology, driving growth and maximizing your potential in the digital landscape.
+                        Empower your business with innovative solutions and cutting-edge technology, driving growth and
+                        maximizing your potential in the digital landscape.
                       </p>
                     </div>
                   </RevealAnimation>
                 </div>
-                {/* heading btn  */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5">
                   <RevealAnimation delay={0.4} instant={true}>
                     <LinkButton
@@ -113,7 +104,9 @@ const Hero = () => {
                           <div className="size-3 rounded-full bg-[#FFBD2E]"></div>
                           <div className="size-3 rounded-full bg-[#27C93F]"></div>
                         </div>
-                        <span className="text-secondary/60 dark:text-white/40 text-xs ml-2 italic">sys_init.sh — 80×24</span>
+                        <span className="text-secondary/60 dark:text-white/40 text-xs ml-2 italic">
+                          sys_init.sh — 80×24
+                        </span>
                       </div>
 
                       {/* Terminal Body */}
@@ -128,7 +121,9 @@ const Hero = () => {
 
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-1">
-                            <span className="text-[10px] uppercase tracking-wider text-secondary/40 dark:text-white/30">Support Load</span>
+                            <span className="text-[10px] uppercase tracking-wider text-secondary/40 dark:text-white/30">
+                              Support Load
+                            </span>
                             <div className="flex items-center gap-2">
                               <div className="h-1.5 flex-1 bg-white/10 rounded-full overflow-hidden">
                                 <div className="h-full bg-secondary dark:bg-accent w-[24%]" />
@@ -137,7 +132,9 @@ const Hero = () => {
                             </div>
                           </div>
                           <div className="space-y-1 text-right">
-                            <span className="text-[10px] uppercase tracking-wider text-secondary/40 dark:text-white/30">Tickets Solved</span>
+                            <span className="text-[10px] uppercase tracking-wider text-secondary/40 dark:text-white/30">
+                              Tickets Solved
+                            </span>
                             <p className="text-lg font-bold leading-tight">53.2k</p>
                           </div>
                         </div>
@@ -164,24 +161,84 @@ const Hero = () => {
             <RevealAnimation delay={1} instant={true}>
               <div className="flex items-center flex-wrap md:flex-nowrap justify-center lg:justify-start gap-8 md:gap-y-0 md:gap-x-12 mt-12 lg:mt-0">
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-1-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-1-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
+                  <Image
+                    src="/images/icons/client-logo-1-white.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto dark:hidden"
+                    width={144}
+                    height={40}
+                  />
+                  <Image
+                    src="/images/icons/client-logo-1-dark.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto hidden dark:block"
+                    width={144}
+                    height={40}
+                  />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-2-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-2-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
+                  <Image
+                    src="/images/icons/client-logo-2-white.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto dark:hidden"
+                    width={144}
+                    height={40}
+                  />
+                  <Image
+                    src="/images/icons/client-logo-2-dark.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto hidden dark:block"
+                    width={144}
+                    height={40}
+                  />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-3-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-3-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
+                  <Image
+                    src="/images/icons/client-logo-3-white.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto dark:hidden"
+                    width={144}
+                    height={40}
+                  />
+                  <Image
+                    src="/images/icons/client-logo-3-dark.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto hidden dark:block"
+                    width={144}
+                    height={40}
+                  />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-4-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-4-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
+                  <Image
+                    src="/images/icons/client-logo-4-white.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto dark:hidden"
+                    width={144}
+                    height={40}
+                  />
+                  <Image
+                    src="/images/icons/client-logo-4-dark.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto hidden dark:block"
+                    width={144}
+                    height={40}
+                  />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-5-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-5-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
+                  <Image
+                    src="/images/icons/client-logo-5-white.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto dark:hidden"
+                    width={144}
+                    height={40}
+                  />
+                  <Image
+                    src="/images/icons/client-logo-5-dark.svg"
+                    alt="Client logo"
+                    className="lg:w-auto lg:h-auto hidden dark:block"
+                    width={144}
+                    height={40}
+                  />
                 </figure>
               </div>
             </RevealAnimation>

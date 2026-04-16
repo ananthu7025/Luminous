@@ -19,18 +19,6 @@ const BlogContent = ({ blog }: BlogContentProps) => {
             <h2 className="max-w-[884px]">{blog.data.title}</h2>
           </RevealAnimation>
           <div className="flex items-center gap-3">
-            <RevealAnimation delay={0.2}>
-              <figure className="size-12 rounded-full overflow-hidden bg-[#ECEAED]">
-                <Image
-                  src={blog.data.authorImage}
-                  className="object-center object-cover"
-                  alt="Esther Howard's avatar"
-                  width={48}
-                  height={48}
-                  loading="lazy"
-                />
-              </figure>
-            </RevealAnimation>
             <div>
               <RevealAnimation delay={0.3}>
                 <h3 className="text-tagline-1 font-medium">{blog.data.authorName}</h3>

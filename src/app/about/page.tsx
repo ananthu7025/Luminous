@@ -1,8 +1,8 @@
 import About from '@/components/sections/About';
 import Innovation from '@/components/sections/Innovation';
 import CTA from '@/components/sections/CTA';
-import FooterOne from '@/components/layout/footer/FooterOne';
-import NavbarOne from '@/components/layout/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/Footer';
+import NavbarOne from '@/components/layout/header/Navbar';
 import PageHero from '@/components/shared/PageHero';
 import Results from '@/components/sections/Results';
 import { defaultMetadata } from '@/utils/generateMetaData';

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -6,15 +8,15 @@ import BlogCardV1 from '../shared/card/BlogCardV1';
 import LinkButton from '../ui/button/LinkButton';
 import { crmApi, fetchFromCRM } from '@/config/api';
 
-interface BlogProps {
-  hideButton?: boolean;
-}
-
 interface BlogResponse {
   blogs: any[];
 }
 
-const BlogWithAPI = ({ hideButton = false }: BlogProps) => {
+interface BlogListProps {
+  hideButton?: boolean;
+}
+
+const BlogListWithAPI = ({ hideButton = false }: BlogListProps) => {
   const [blogs, setBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +29,7 @@ const BlogWithAPI = ({ hideButton = false }: BlogProps) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchFromCRM<BlogResponse>(crmApi.blog.list(5));
+      const data = await fetchFromCRM<BlogResponse>(crmApi.blog.list());
       if (data && 'blogs' in data) {
         setBlogs(data.blogs);
       } else {
@@ -72,8 +74,6 @@ const BlogWithAPI = ({ hideButton = false }: BlogProps) => {
     );
   }
 
-  const displayBlogs = blogs.slice(0, 5);
-
   return (
     <section
       className="pt-20 pb-28 md:pt-32 md:pb-32 lg:pt-[128px] lg:pb-[128px] xl:pt-[100px] xl:pb-[100px] bg-background-2 dark:bg-background-5"
@@ -94,7 +94,7 @@ const BlogWithAPI = ({ hideButton = false }: BlogProps) => {
         </div>
 
         <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {displayBlogs.map((blog, index) => (
+          {blogs.map((blog, index) => (
             <RevealAnimation delay={0.3 + index * 0.1} key={blog.slug}>
               <BlogCardV1
                 blog={blog}
@@ -121,4 +121,4 @@ const BlogWithAPI = ({ hideButton = false }: BlogProps) => {
   );
 };
 
-export default BlogWithAPI;
+export default BlogListWithAPI;

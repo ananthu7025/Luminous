@@ -1,10 +1,9 @@
-import Blog from '@/components/sections/Blog';
+import BlogListWithAPI from '@/components/sections/BlogList';
 import CTAV1 from '@/components/shared/CTA/CTAV1';
-import FooterOne from '@/components/layout/footer/FooterOne';
-import NavbarOne from '@/components/layout/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/Footer';
+import NavbarOne from '@/components/layout/header/Navbar';
 import PageHero from '@/components/shared/PageHero';
 import { defaultMetadata } from '@/utils/generateMetaData';
-import getMarkDownData from '@/utils/getMarkDownData';
 import { Metadata } from 'next';
 import { Fragment } from 'react';
 
@@ -15,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 const BlogPage = () => {
-  const blogs = getMarkDownData('src/data/blogs');
-
   return (
     <Fragment>
       <NavbarOne
@@ -29,7 +26,7 @@ const BlogPage = () => {
           heading="Engineering Insights"
           className="pt-24 md:pt-36 lg:pt-40 xl:pt-[200px]"
         />
-        <Blog blogs={blogs} hideButton={true} />
+        <BlogListWithAPI hideButton={true} />
         <CTAV1
           className="dark:bg-black bg-white pt-0"
           badgeClass="!badge-cyan"

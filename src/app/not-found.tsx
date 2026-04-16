@@ -1,6 +1,6 @@
 import RevealAnimation from '@/components/animation/RevealAnimation';
-import FooterOne from '@/components/layout/footer/FooterOne';
-import NavbarOne from '@/components/layout/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/Footer';
+import NavbarOne from '@/components/layout/header/Navbar';
 import LinkButton from '@/components/ui/button/LinkButton';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import { Metadata } from 'next';

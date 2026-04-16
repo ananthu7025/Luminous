@@ -1,12 +1,92 @@
-import { ICaseStudy } from '@/interface';
-import getMarkDownData from '@/utils/getMarkDownData';
+/* eslint-disable react/no-unescaped-entities */
+'use client';
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import RevealAnimation from '../animation/RevealAnimation';
 import LinkButton from '../ui/button/LinkButton';
+import { crmApi, fetchFromCRM } from '@/config/api';
 
+interface CaseStudy {
+  id: string;
+  title: string;
+  slug: string;
+  thumbnail: string;
+  industry: string;
+  stack: string;
+  description: string;
+}
 
-const Portfolio = () => {
-  const projects: ICaseStudy[] = getMarkDownData('src/data/luminous/portfolio');
+interface PortfolioResponse {
+  projects: CaseStudy[];
+}
+
+const PortfolioWithAPI = () => {
+  const [projects, setProjects] = useState<CaseStudy[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await fetchFromCRM<PortfolioResponse>(crmApi.caseStudies.list(6));
+      if (data && 'projects' in data) {
+        setProjects(data.projects);
+      } else {
+        setError('Failed to load case studies');
+      }
+    } catch (err) {
+      console.error('Error loading case studies:', err);
+      setError('Failed to load case studies');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (error) {
+    return (
+      <section className="xl:py-[100px] lg:py-[90px] md:py-20 py-16">
+        <div className="main-container">
+          <div className="text-center space-y-4">
+            <h2>Case Studies Not Available</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              We're unable to load case studies at the moment. Please try again later.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (loading) {
+    return (
+      <section className="xl:py-[100px] lg:py-[90px] md:py-20 py-16">
+        <div className="main-container">
+          <div className="text-center">
+            <p className="text-gray-600 dark:text-gray-400">Loading case studies...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!projects || projects.length === 0) {
+    return (
+      <section className="xl:py-[100px] lg:py-[90px] md:py-20 py-16">
+        <div className="main-container">
+          <div className="text-center">
+            <p className="text-gray-600 dark:text-gray-400">No case studies available yet.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="xl:py-[100px] lg:py-[90px] md:py-20 py-16">
       <div className="main-container">
@@ -77,4 +157,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default PortfolioWithAPI;

@@ -1,7 +1,7 @@
 import BlogContent from '@/components/blog-details/BlogContent';
 import CTAV1 from '@/components/shared/CTA/CTAV1';
-import FooterOne from '@/components/layout/footer/FooterOne';
-import NavbarOne from '@/components/layout/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/Footer';
+import NavbarOne from '@/components/layout/header/Navbar';
 import PageHero from '@/components/shared/PageHero';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import getMarkDownContent from '@/utils/getMarkDownContent';
