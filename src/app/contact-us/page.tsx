@@ -1,8 +1,7 @@
-import ContactInfo from '@/components/contact-page/ContactInfo';
-import ContactMap from '@/components/contact-page/ContactMap';
+import ContactInfo from '@/components/contact/ContactInfo';
 import CTAV1 from '@/components/shared/CTA/CTAV1';
-import FooterOne from '@/components/shared/footer/FooterOne';
-import NavbarOne from '@/components/shared/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/FooterOne';
+import NavbarOne from '@/components/layout/header/NavbarOne';
 import PageHero from '@/components/shared/PageHero';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import { Metadata } from 'next';
@@ -27,7 +26,6 @@ const ContactUs = () => {
           className="pt-24 md:pt-36 lg:pt-40 xl:pt-[200px]"
         />
         <ContactInfo />
-        <ContactMap />
         <CTAV1
           className="dark:bg-background-5 bg-white"
           badgeClass="badge-yellow-v2"

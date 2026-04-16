@@ -36,6 +36,7 @@ const Portfolio = () => {
                       alt={project.title || 'portfolio'}
                       fill
                       priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                     />
                     <LinkButton
                       href={`/case-study/${project.slug || ''}`}

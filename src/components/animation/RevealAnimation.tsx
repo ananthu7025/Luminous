@@ -4,7 +4,7 @@ import Springer from '@/utils/springer';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React, { ReactElement, Ref, cloneElement, useRef } from 'react';
+import React, { ReactElement, Ref, cloneElement, useRef, useLayoutEffect } from 'react';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -137,18 +137,24 @@ const RevealAnimation = ({
     }
   }, [duration, delay, offset, instant, start, end, direction, useSpring, rotation, animationType]);
 
-  // Early return if children is not valid (after all hooks)
-  if (!children || !React.isValidElement(children)) {
-    console.warn('RevealAnimation: Invalid children prop provided');
-    return null;
+  // Add data-ns-animate attribute after hydration to avoid hydration mismatch
+  useLayoutEffect(() => {
+    if (elementRef.current) {
+      elementRef.current.setAttribute('data-ns-animate', 'true');
+    }
+  }, []);
+
+  // Only clone if children is a valid React element
+  if (children && React.isValidElement(children)) {
+    // Clone the child element and add the ref and className
+    return cloneElement(children, {
+      ref: elementRef,
+      className: cn(children?.props?.className, className),
+    });
   }
 
-  // Clone the child element and add the ref, className, and data-ns-animate attribute
-  return cloneElement(children, {
-    ref: elementRef,
-    className: cn(children?.props?.className, className),
-    'data-ns-animate': true,
-  });
+  // Return children as-is if not a valid element (prevents hydration mismatch)
+  return children;
 };
 
 export default RevealAnimation;

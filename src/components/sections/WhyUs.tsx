@@ -103,7 +103,7 @@ const WhyUs = () => {
                 <RevealAnimation delay={0.4} offset={100}>
                   <figure className="md:max-w-[350px] lg:max-w-[400px] xl:max-w-[480px] rounded-2xl md:w-full order-last md:order-none">
                     <Image
-                      src="/images/home-page-1/why.png"
+                      src="/images/home-page-2/why.webp"
                       alt="Luminous Logics accountability"
                       className="rounded-2xl"
                       width={480}

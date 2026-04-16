@@ -1,10 +1,10 @@
-import About from '@/components/luminous/About';
-import Innovation from '@/components/luminous/Innovation';
-import CTA from '@/components/luminous/CTA';
-import FooterOne from '@/components/shared/footer/FooterOne';
-import NavbarOne from '@/components/shared/header/NavbarOne';
+import About from '@/components/sections/About';
+import Innovation from '@/components/sections/Innovation';
+import CTA from '@/components/sections/CTA';
+import FooterOne from '@/components/layout/footer/FooterOne';
+import NavbarOne from '@/components/layout/header/NavbarOne';
 import PageHero from '@/components/shared/PageHero';
-import Results from '@/components/luminous/Results';
+import Results from '@/components/sections/Results';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import { Metadata } from 'next';
 import { Fragment } from 'react';

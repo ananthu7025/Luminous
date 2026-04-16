@@ -6,7 +6,7 @@ import { navigationItems } from '@/data/header';
 import { useNavbarScroll } from '@/hooks/useScrollHeader';
 import { cn } from '@/utils/cn';
 import { FC } from 'react';
-import MobileMenu from '../MobileMenu';
+import MobileMenu from '@/components/shared/MobileMenu';
 import Logo from './Logo';
 import MobileMenuButton from './MobileMenuButton';
 import NavCTAButton from './NavCTAButton';

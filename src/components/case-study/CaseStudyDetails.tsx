@@ -27,6 +27,7 @@ const CaseStudyDetails = ({ slug }: CaseStudyDetailsProps) => {
                 alt={`${caseStudy.data.title} project visualization`}
                 fill
                 className="size-full object-cover p-4 lg:p-10"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 1000px"
               />
             </figure>
           </RevealAnimation>

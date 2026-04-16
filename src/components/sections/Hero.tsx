@@ -1,4 +1,5 @@
-import { DownArrowIcon, StarIcon, UpArrowIcon } from '@/icons';
+'use client';
+
 // Static imports removed for more reliable public path usage
 // Static imports removed for more reliable public path usage
 const heroBg = '/images/luminous-assets/hero-bg.svg';
@@ -22,6 +23,7 @@ const Hero = () => {
               className="size-full object-cover dark:hidden"
               fill
               priority
+              sizes="100vw"
             />
             <Image
               src={heroBgDark}
@@ -29,6 +31,7 @@ const Hero = () => {
               className="size-full object-cover hidden dark:inline-block"
               fill
               priority
+              sizes="100vw"
             />
           </figure>
           <div className="main-container relative z-10">
@@ -161,24 +164,24 @@ const Hero = () => {
             <RevealAnimation delay={1} instant={true}>
               <div className="flex items-center flex-wrap md:flex-nowrap justify-center lg:justify-start gap-8 md:gap-y-0 md:gap-x-12 mt-12 lg:mt-0">
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-1-white.svg" alt="Client logo" className="lg:w-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-1-dark.svg" alt="Client logo" className="lg:w-auto hidden dark:block" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-1-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-1-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-2-white.svg" alt="Client logo" className="lg:w-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-2-dark.svg" alt="Client logo" className="lg:w-auto hidden dark:block" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-2-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-2-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-3-white.svg" alt="Client logo" className="lg:w-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-3-dark.svg" alt="Client logo" className="lg:w-auto hidden dark:block" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-3-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-3-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-4-white.svg" alt="Client logo" className="lg:w-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-4-dark.svg" alt="Client logo" className="lg:w-auto hidden dark:block" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-4-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-4-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
                 </figure>
                 <figure className="lg:min-w-36">
-                  <Image src="/images/icons/client-logo-5-white.svg" alt="Client logo" className="lg:w-auto dark:hidden" width={144} height={40} />
-                  <Image src="/images/icons/client-logo-5-dark.svg" alt="Client logo" className="lg:w-auto hidden dark:block" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-5-white.svg" alt="Client logo" className="lg:w-auto lg:h-auto dark:hidden" width={144} height={40} />
+                  <Image src="/images/icons/client-logo-5-dark.svg" alt="Client logo" className="lg:w-auto lg:h-auto hidden dark:block" width={144} height={40} />
                 </figure>
               </div>
             </RevealAnimation>

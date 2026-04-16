@@ -1,17 +1,18 @@
-import About from '@/components/luminous/About';
-import Portfolio from '@/components/luminous/Portfolio';
-import Blog from '@/components/luminous/Blog';
-import CTA from '@/components/luminous/CTA';
-import Hero from '@/components/luminous/Hero';
-import Results from '@/components/luminous/Results';
-import Services from '@/components/luminous/Services';
-import AITransform from '@/components/luminous/AITransform';
-import Industries from '@/components/luminous/Industries';
-import Steps from '@/components/luminous/Steps';
-import Testimonial from '@/components/luminous/Testimonial';
-import WhyUs from '@/components/luminous/WhyUs';
-import FooterOne from '@/components/shared/footer/FooterOne';
-import NavbarOne from '@/components/shared/header/NavbarOne';
+import About from '@/components/sections/About';
+import Portfolio from '@/components/sections/Portfolio';
+import Blog from '@/components/sections/Blog';
+import CTA from '@/components/sections/CTA';
+import Hero from '@/components/sections/Hero';
+import Results from '@/components/sections/Results';
+import Services from '@/components/sections/Services';
+import AITransform from '@/components/sections/AITransform';
+import Industries from '@/components/sections/Industries';
+import Steps from '@/components/sections/Steps';
+import Testimonial from '@/components/sections/Testimonial';
+import WhyUs from '@/components/sections/WhyUs';
+import FooterOne from '@/components/layout/footer/FooterOne';
+import NavbarOne from '@/components/layout/header/NavbarOne';
+import HydrationGuard from '@/components/HydrationGuard';
 import { Metadata } from 'next';
 import { Fragment } from 'react';
 
@@ -31,13 +32,21 @@ const LuminousHomepage = () => {
       <main className="bg-white dark:bg-black">
         <Hero />
         <About />
-        <Services />
+        <HydrationGuard>
+          <Services />
+        </HydrationGuard>
         <AITransform />
-        <Industries />
+        <HydrationGuard>
+          <Industries />
+        </HydrationGuard>
         <Steps />
-        <Portfolio />
+        <HydrationGuard>
+          <Portfolio />
+        </HydrationGuard>
         <WhyUs />
-        <Results />
+        <HydrationGuard>
+          <Results />
+        </HydrationGuard>
         <Testimonial />
         <Blog />
         <CTA />

@@ -28,11 +28,12 @@ const AITransform = () => {
                 </RevealAnimation>
 
                 <div className="absolute bottom-0 left-0 w-full h-[60%] sm:h-[65%]">
-                  <Image 
-                    src="/images/luminous-assets/vr-collage.png" 
-                    alt="VR Technology Integration" 
-                    fill 
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110" 
+                  <Image
+                    src="/images/luminous-assets/vr-collage.png"
+                    alt="VR Technology Integration"
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#F6F4F1] dark:from-background-8 via-transparent to-transparent opacity-60" />
                 </div>

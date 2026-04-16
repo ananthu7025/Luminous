@@ -10,7 +10,7 @@ import darkLogo from '@public/images/luminous-assets/LuminousLogo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
-import ThemeToggle from '../ThemeToggle';
+import ThemeToggle from '@/components/shared/ThemeToggle';
 import FooterDivider from './FooterDivider';
 import FooterLeftGradient from './FooterLeftGradient';
 import FooterRightGradient from './FooterRightGradient';

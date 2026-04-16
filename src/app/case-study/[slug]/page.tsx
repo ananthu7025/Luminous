@@ -1,7 +1,7 @@
 import CaseStudyDetails from '@/components/case-study/CaseStudyDetails';
 import CTAV1 from '@/components/shared/CTA/CTAV1';
-import FooterOne from '@/components/shared/footer/FooterOne';
-import NavbarOne from '@/components/shared/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/FooterOne';
+import NavbarOne from '@/components/layout/header/NavbarOne';
 import PageHero from '@/components/shared/PageHero';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import getMarkDownData from '@/utils/getMarkDownData';

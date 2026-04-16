@@ -60,6 +60,7 @@ export class StackCards {
     this.elementHeight = this.element.offsetHeight;
 
     // store card properties
+    if (!this.items[0]) return; // Exit if no items exist
     const cardStyle = getComputedStyle(this.items[0]);
     const topOffset = cardStyle.getPropertyValue('top');
 

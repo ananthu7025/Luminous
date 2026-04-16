@@ -1,10 +1,10 @@
-import Services from '@/components/luminous/Services';
-import ServicesV2 from '@/components/luminous/ServicesV2';
-import Solutions from '@/components/luminous/Solutions';
-import Steps from '@/components/luminous/Steps';
+import Services from '@/components/sections/Services';
+import ServicesV2 from '@/components/sections/ServicesV2';
+import Solutions from '@/components/sections/Solutions';
+import Steps from '@/components/sections/Steps';
 import CTAV1 from '@/components/shared/CTA/CTAV1';
-import FooterOne from '@/components/shared/footer/FooterOne';
-import NavbarOne from '@/components/shared/header/NavbarOne';
+import FooterOne from '@/components/layout/footer/FooterOne';
+import NavbarOne from '@/components/layout/header/NavbarOne';
 import PageHero from '@/components/shared/PageHero';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import { Metadata } from 'next';
