@@ -99,7 +99,7 @@ const Chatbot = () => {
         const data = await response.json();
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
-          content: data.reply || "I'm having trouble responding. Please try again.",
+          content: data.response || data.reply || "I'm having trouble responding. Please try again.",
           sender: 'assistant',
           timestamp: new Date(),
         };
@@ -237,7 +237,7 @@ const Chatbot = () => {
                       'max-w-xs px-4 py-2 rounded-xl border',
                       msg.sender === 'user'
                         ? 'bg-accent text-secondary rounded-br-none border-accent/50'
-                        : 'bg-white/10 text-white rounded-tl-none border-white/5'
+                        : 'bg-white text-secondary rounded-tl-none border-white'
                     )}
                   >
                     <p className="text-[13px] leading-relaxed whitespace-pre-wrap">
