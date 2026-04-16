@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const CRM_API_BASE = process.env.NEXT_PUBLIC_CRM_API_BASE || 'https://luminoustracker.luminouslogics.com';
 
+// Handle OPTIONS requests (for CORS preflight)
+export async function OPTIONS() {
+  return NextResponse.json({ ok: true });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
